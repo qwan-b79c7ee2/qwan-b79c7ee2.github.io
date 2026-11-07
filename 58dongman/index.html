@@ -1,0 +1,987 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>58动漫网-在线追番_新番推荐_动漫大全_58动漫网</title>
+    <meta name="description" content="58动漫网是动漫爱好者的追番聚集地，提供新番推荐、动漫大全、在线追番指南、人气榜单与深度解析。这里汇聚海量动漫资源与社区讨论，帮你快速找到想看的作品，轻松跟进更新节奏。">
+    <meta name="keywords" content="58动漫网,在线追番,新番推荐,动漫大全,动漫社区,追番指南">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%236c5ce7'/%3E%3Ctext x='50' y='68' font-size='52' text-anchor='middle' fill='white' font-family='Arial'%3E58%3C/text%3E%3C/svg%3E">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        :root {
+            --bg: #f7f9fc;
+            --surface: #ffffff;
+            --primary: #6c5ce7;
+            --primary-light: #a29bfe;
+            --secondary: #fd79a8;
+            --text-main: #2d3436;
+            --text-sub: #636e72;
+            --border: #e9ecef;
+            --shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+            --radius: 20px;
+            --radius-sm: 12px;
+            --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            --max-width: 1200px;
+            --transition: 0.2s ease;
+        }
+        body {
+            font-family: var(--font);
+            background: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        /* 导航 */
+        .nav-bar {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.02);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 68px;
+        }
+        .logo-badge {
+            font-size: 1.6rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: var(--text-sub);
+        }
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        .nav-actions {
+            display: flex;
+            gap: 12px;
+        }
+        .btn-outline {
+            padding: 8px 18px;
+            border-radius: 40px;
+            border: 1.5px solid var(--primary);
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+        .btn-fill {
+            padding: 8px 20px;
+            border-radius: 40px;
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            box-shadow: 0 4px 12px rgba(108, 92, 231, 0.25);
+        }
+        .btn-fill:hover {
+            background: #5a4bd1;
+            transform: translateY(-1px);
+        }
+        /* Banner */
+        .hero-section {
+            padding: 40px 0 32px;
+        }
+        .hero-card {
+            background: linear-gradient(125deg, #f0edff 0%, #ffeef8 100%);
+            border-radius: 32px;
+            padding: 48px 56px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-card::after {
+            content: '58';
+            position: absolute;
+            right: 20px;
+            bottom: -30px;
+            font-size: 180px;
+            font-weight: 900;
+            color: rgba(108, 92, 231, 0.06);
+            line-height: 1;
+            pointer-events: none;
+        }
+        .hero-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            color: #1e1b2e;
+        }
+        .hero-title span {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-desc {
+            font-size: 1.1rem;
+            color: #4a4458;
+            max-width: 600px;
+            margin-bottom: 28px;
+        }
+        .search-bar {
+            display: flex;
+            background: white;
+            border-radius: 60px;
+            padding: 4px;
+            box-shadow: var(--shadow);
+            width: 100%;
+            max-width: 500px;
+            margin-bottom: 28px;
+        }
+        .search-bar input {
+            flex: 1;
+            border: none;
+            padding: 12px 20px;
+            font-size: 1rem;
+            border-radius: 60px;
+            outline: none;
+            background: transparent;
+        }
+        .search-bar button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 60px;
+            padding: 12px 28px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .search-bar button:hover {
+            background: #5a4bd1;
+        }
+        .hero-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .hero-tags a {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(4px);
+            padding: 8px 18px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #3d3a4e;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+        }
+        .hero-tags a:hover {
+            background: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+        }
+        /* 通用区块 */
+        .section {
+            padding: 48px 0;
+        }
+        .section-header {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            margin-bottom: 28px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        .section-title span {
+            color: var(--primary);
+        }
+        .section-link {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 0.95rem;
+        }
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 24px;
+        }
+        .card {
+            background: var(--surface);
+            border-radius: var(--radius);
+            padding: 20px 20px 18px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.06);
+        }
+        .card-cover {
+            width: 100%;
+            aspect-ratio: 16/9;
+            border-radius: var(--radius-sm);
+            background: linear-gradient(145deg, #ded9ff, #f8e8ff);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 800;
+            color: rgba(108, 92, 231, 0.3);
+        }
+        .card-type {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--primary);
+            margin-bottom: 6px;
+        }
+        .card-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+        .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 10px;
+        }
+        .card-tags span {
+            background: #f1f3f7;
+            border-radius: 40px;
+            padding: 4px 12px;
+            font-size: 0.72rem;
+            font-weight: 500;
+            color: #4f4b5e;
+        }
+        .card-desc {
+            font-size: 0.9rem;
+            color: var(--text-sub);
+            margin-bottom: 14px;
+            flex: 1;
+        }
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: #8a8699;
+            border-top: 1px solid var(--border);
+            padding-top: 12px;
+            margin-top: auto;
+        }
+        /* 最新更新列表 */
+        .update-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        .update-item {
+            background: var(--surface);
+            border-radius: var(--radius-sm);
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+        .update-item:hover {
+            border-color: var(--primary-light);
+        }
+        .update-time {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--primary);
+            background: #f0edff;
+            padding: 6px 12px;
+            border-radius: 40px;
+            white-space: nowrap;
+        }
+        .update-info h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .update-info p {
+            font-size: 0.85rem;
+            color: var(--text-sub);
+        }
+        /* 分类入口 */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+        .category-item {
+            background: var(--surface);
+            padding: 20px 16px;
+            border-radius: var(--radius-sm);
+            text-align: center;
+            font-weight: 600;
+            border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+        .category-item:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        .category-item .emoji {
+            font-size: 1.8rem;
+            display: block;
+            margin-bottom: 8px;
+        }
+        /* 深度解析 */
+        .analysis-content {
+            background: var(--surface);
+            border-radius: var(--radius);
+            padding: 36px 40px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+        .analysis-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+        .analysis-content p {
+            margin-bottom: 16px;
+            color: #3d3a4e;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+        /* 体验指南 */
+        .guide-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .guide-card {
+            background: var(--surface);
+            border-radius: var(--radius);
+            padding: 24px;
+            border: 1px solid var(--border);
+        }
+        .guide-card h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .guide-card p {
+            font-size: 0.95rem;
+            color: var(--text-sub);
+        }
+        /* FAQ */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        .faq-item {
+            background: var(--surface);
+            border-radius: var(--radius-sm);
+            padding: 22px 24px;
+            border: 1px solid var(--border);
+        }
+        .faq-q {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        .faq-q span {
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+        .faq-a {
+            font-size: 0.92rem;
+            color: var(--text-sub);
+            padding-left: 30px;
+        }
+        /* 评论 */
+        .comment-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        .comment-item {
+            background: var(--surface);
+            border-radius: var(--radius-sm);
+            padding: 16px 20px;
+            border: 1px solid var(--border);
+        }
+        .comment-user {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+        .avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-light), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+        .username {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .comment-date {
+            font-size: 0.75rem;
+            color: #999;
+            margin-left: auto;
+        }
+        .comment-text {
+            font-size: 0.9rem;
+            color: #3d3a4e;
+            line-height: 1.6;
+        }
+        /* 资讯卡片 */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        .news-card {
+            background: var(--surface);
+            border-radius: var(--radius-sm);
+            padding: 20px 24px;
+            border-left: 4px solid var(--primary);
+            border-top: 1px solid var(--border);
+            border-right: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+        .news-date {
+            font-size: 0.75rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+        .news-title {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 6px;
+        }
+        .news-summary {
+            font-size: 0.88rem;
+            color: var(--text-sub);
+        }
+        /* 页脚 */
+        .footer {
+            background: #1e1b2e;
+            color: #b0a8c0;
+            padding: 48px 0 32px;
+            margin-top: 40px;
+        }
+        .footer-inner {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+        }
+        .footer h5 {
+            color: white;
+            font-weight: 700;
+            margin-bottom: 16px;
+            font-size: 1rem;
+        }
+        .footer p, .footer a {
+            font-size: 0.9rem;
+            line-height: 1.8;
+            display: block;
+            color: #b0a8c0;
+        }
+        .footer a:hover {
+            color: white;
+        }
+        .footer-bottom {
+            border-top: 1px solid #2d2a3e;
+            margin-top: 40px;
+            padding-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        /* 响应式 */
+        @media (max-width: 992px) {
+            .hero-card { padding: 32px 28px; }
+            .hero-title { font-size: 2.2rem; }
+            .category-grid { grid-template-columns: repeat(2, 1fr); }
+            .guide-grid { grid-template-columns: 1fr; }
+            .footer-inner { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero-title { font-size: 1.8rem; }
+            .update-list { grid-template-columns: 1fr; }
+            .faq-grid { grid-template-columns: 1fr; }
+            .comment-list { grid-template-columns: 1fr; }
+            .news-grid { grid-template-columns: 1fr; }
+            .analysis-content { padding: 24px; }
+            .footer-inner { grid-template-columns: 1fr; gap: 24px; }
+            .card-grid { grid-template-columns: 1fr; }
+            .nav-actions { display: none; }
+            .container { padding: 0 16px; }
+        }
+        @media (max-width: 480px) {
+            .hero-card { padding: 24px 18px; }
+            .hero-title { font-size: 1.5rem; }
+            .category-grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航 -->
+    <nav class="nav-bar">
+        <div class="container nav-inner">
+            <a href="/" class="logo-badge">58动漫网</a>
+            <div class="nav-links">
+                <a href="/#hot">热门推荐</a>
+                <a href="/#latest">最新更新</a>
+                <a href="/#category">分类</a>
+                <a href="/#analysis">深度解析</a>
+                <a href="/#faq">常见问题</a>
+                <a href="/#comments">社区评论</a>
+            </div>
+            <div class="nav-actions">
+                <a href="/#subscribe" class="btn-outline">订阅追番</a>
+                <a href="/#latest" class="btn-fill">开始追番</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 首屏 Banner -->
+    <header class="hero-section">
+        <div class="container">
+            <div class="hero-card">
+                <h1 class="hero-title"><span>58动漫网</span> · 在线追番与动漫大全</h1>
+                <p class="hero-desc">汇聚新番推荐、经典补番、人气榜单与深度解析。无论你是季度追番党还是补番收藏家，都能在58动漫网找到属于自己的节奏。</p>
+                <div class="search-bar">
+                    <input type="text" placeholder="搜索动漫、角色、声优或关键词...">
+                    <button>搜索</button>
+                </div>
+                <div class="hero-tags">
+                    <a href="/#hot">🔥 热门新番</a>
+                    <a href="/#latest">📅 今日更新</a>
+                    <a href="/#category">🎬 分类大全</a>
+                    <a href="/#analysis">📖 深度解析</a>
+                    <a href="/#faq">❓ 追番指南</a>
+                    <a href="/#comments">💬 社区热评</a>
+                    <a href="/#news">📰 动漫资讯</a>
+                    <a href="/#subscribe">🔔 订阅提醒</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 内容简介 -->
+    <section class="section" id="intro">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">关于 <span>58动漫网</span> 的内容定位</h2>
+            </div>
+            <div class="analysis-content">
+                <p>58动漫网是一个面向动漫爱好者的内容聚合与社区讨论平台，围绕“在线追番”和“动漫大全”两大核心需求展开。无论你是在寻找当季新番的播出时间、经典老番的回顾推荐，还是想了解某部作品的角色关系与制作背景，都能在这里找到对应的内容线索。页面整合了热门推荐、最新更新、分类索引、深度解析和用户评论等模块，帮助你在信息过载的动漫市场中快速建立自己的追番节奏。</p>
+                <p>对于追番党来说，最怕的是错过更新和踩雷烂尾。58动漫网通过每日更新列表、热度评分和社区口碑三个维度，为你提供决策参考。对于补番用户，分类入口和深度解析则能帮你快速了解一部作品的类型风格、制作阵容和适合人群。此外，FAQ和评论区覆盖了大量真实用户的追番经验，从“先看哪部”到“哪部适合下饭”都能找到有参考价值的回答。收藏58动漫网，相当于拥有一个随身的动漫情报站。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 热门推荐 -->
+    <section class="section" id="hot">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">🔥 热门推荐 · <span>高人气追番选择</span></h2>
+                <a href="/#latest" class="section-link">查看全部 →</a>
+            </div>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-cover">呪</div>
+                    <div class="card-type">热血 / 战斗</div>
+                    <h3 class="card-title">咒术回战 第三季</h3>
+                    <div class="card-tags"><span>MAPPA</span><span>漫改</span><span>高燃</span></div>
+                    <p class="card-desc">涩谷事变后续高潮迭起，作画与分镜持续在线，适合追求肾上腺素飙升的观众。</p>
+                    <div class="card-meta"><span>⭐ 9.2</span><span>周三更新</span></div>
+                </div>
+                <div class="card">
+                    <div class="card-cover">葬</div>
+                    <div class="card-type">奇幻 / 治愈</div>
+                    <h3 class="card-title">葬送的芙莉莲 第二季</h3>
+                    <div class="card-tags"><span>Madhouse</span><span>慢节奏</span><span>情感</span></div>
+                    <p class="card-desc">继续以细腻笔触探讨时间与记忆，适合喜欢安静叙事和深度人物刻画的观众。</p>
+                    <div class="card-meta"><span>⭐ 9.5</span><span>周五更新</span></div>
+                </div>
+                <div class="card">
+                    <div class="card-cover">药</div>
+                    <div class="card-type">日常 / 推理</div>
+                    <h3 class="card-title">药屋少女的呢喃 第二季</h3>
+                    <div class="card-tags"><span>TOHO</span><span>中华风</span><span>猫猫</span></div>
+                    <p class="card-desc">猫猫的后宫推理日常继续，轻松中带着悬疑，适合下饭与解谜爱好者。</p>
+                    <div class="card-meta"><span>⭐ 8.9</span><span>周六更新</span></div>
+                </div>
+                <div class="card">
+                    <div class="card-cover">我</div>
+                    <div class="card-type">校园 / 恋爱</div>
+                    <h3 class="card-title">我心里危险的东西 第二季</h3>
+                    <div class="card-tags"><span>Shin-Ei</span><span>纯爱</span><span>青春</span></div>
+                    <p class="card-desc">细腻的青春期情感刻画，甜而不腻，被观众称为近年最佳恋爱漫改之一。</p>
+                    <div class="card-meta"><span>⭐ 9.3</span><span>周日更新</span></div>
+                </div>
+                <div class="card">
+                    <div class="card-cover">间</div>
+                    <div class="card-type">悬疑 / 奇幻</div>
+                    <h3 class="card-title">间谍过家家 第三季</h3>
+                    <div class="card-tags"><span>WIT×CloverWorks</span><span>合家欢</span><span>搞笑</span></div>
+                    <p class="card-desc">阿尼亚与约尔的家庭喜剧继续升级，动作与笑点齐飞，适合全年龄观众。</p>
+                    <div class="card-meta"><span>⭐ 8.8</span><span>周六更新</span></div>
+                </div>
+                <div class="card">
+                    <div class="card-cover">迷</div>
+                    <div class="card-type">冒险 / 奇幻</div>
+                    <h3 class="card-title">迷宫饭 第二季</h3>
+                    <div class="card-tags"><span>TRIGGER</span><span>美食</span><span>地下城</span></div>
+                    <p class="card-desc">一边烹饪魔物一边推进主线，奇思妙想的设定与扎实的冒险故事结合得恰到好处。</p>
+                    <div class="card-meta"><span>⭐ 9.0</span><span>周四更新</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 最新更新 -->
+    <section class="section" id="latest">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">📅 最新更新 · <span>今日追番速览</span></h2>
+                <a href="/#news" class="section-link">更多资讯 →</a>
+            </div>
+            <div class="update-list">
+                <div class="update-item">
+                    <span class="update-time">11月7日 14:00</span>
+                    <div class="update-info"><h4>咒术回战 第三季</h4><p>第8集「觉醒」已上线，作画回预警</p></div>
+                </div>
+                <div class="update-item">
+                    <span class="update-time">11月7日 12:00</span>
+                    <div class="update-info"><h4>葬送的芙莉莲 第二季</h4><p>第10集更新，一级魔法使考试篇继续</p></div>
+                </div>
+                <div class="update-item">
+                    <span class="update-time">11月7日 10:30</span>
+                    <div class="update-info"><h4>药屋少女的呢喃 第二季</h4><p>第6集「壬氏的秘密」更新</p></div>
+                </div>
+                <div class="update-item">
+                    <span class="update-time">11月6日 22:00</span>
+                    <div class="update-info"><h4>间谍过家家 第三季</h4><p>第7集更新，黄昏任务出现变数</p></div>
+                </div>
+                <div class="update-item">
+                    <span class="update-time">11月6日 20:00</span>
+                    <div class="update-info"><h4>迷宫饭 第二季</h4><p>第9集「炎龙」更新，剧情进入新章</p></div>
+                </div>
+                <div class="update-item">
+                    <span class="update-time">11月6日 18:00</span>
+                    <div class="update-info"><h4>我心里危险的东西 第二季</h4><p>第8集更新，文化祭篇高甜预警</p></div>
+                </div>
+                <div class="update-item">
+                    <span class="update-time">11月5日 21:00</span>
+                    <div class="update-info"><h4>蓝色监狱 第二季</h4><p>第7集更新，U-20对决持续升温</p></div>
+                </div>
+                <div class="update-item">
+                    <span class="update-time">11月5日 19:00</span>
+                    <div class="update-info"><h4>香格里拉·开拓异境</h4><p>第18集更新，新BOSS战开启</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 分类入口 -->
+    <section class="section" id="category">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">🎬 分类入口 · <span>按题材快速找番</span></h2>
+            </div>
+            <div class="category-grid">
+                <a href="/#hot" class="category-item"><span class="emoji">🔥</span>热血战斗</a>
+                <a href="/#hot" class="category-item"><span class="emoji">💕</span>恋爱校园</a>
+                <a href="/#hot" class="category-item"><span class="emoji">🧙</span>奇幻冒险</a>
+                <a href="/#hot" class="category-item"><span class="emoji">🕵️</span>悬疑推理</a>
+                <a href="/#hot" class="category-item"><span class="emoji">😂</span>搞笑日常</a>
+                <a href="/#hot" class="category-item"><span class="emoji">🌙</span>治愈慢节奏</a>
+                <a href="/#hot" class="category-item"><span class="emoji">⚔️</span>战斗热血</a>
+                <a href="/#hot" class="category-item"><span class="emoji">🎓</span>校园青春</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 深度解析 -->
+    <section class="section" id="analysis">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">📖 深度解析 · <span>58动漫网的追番视角</span></h2>
+            </div>
+            <div class="analysis-content">
+                <h3>为什么追番越来越需要“58动漫网”这样的导航？</h3>
+                <p>每个季度都有几十部新番上线，加上经典老番补不完，动漫爱好者面临的选择困难症比任何时候都严重。58动漫网将“类型标签”“更新日历”“社区评分”和“编辑推荐”整合在同一个页面里，让你不用在多个平台之间来回跳转。特别是对于时间有限的上班族和学生党，快速判断一部作品是否符合口味，比盲目试看三集要高效得多。从热血战斗到治愈日常，从悬疑烧脑到搞笑解压，分类入口直接对应不同类型的情绪需求。</p>
+                <p>在内容消费节奏上，58动漫网强调“追更”和“补番”两种模式并行。追更用户关注的是更新时间和集数进度，补番用户则更在意作品是否完结、总集数以及口碑评分。页面中的最新更新模块和热门推荐卡片都同时标注了这些信息。深度解析部分则从作品制作背景、叙事节奏和角色塑造等角度提供参考，比如一部作品是慢热型还是开局即高能，这直接影响到观看体验和弃番率。对于想深入讨论的用户，评论区提供了开放的话题空间，从剧情预测到声优表现都有涉及。</p>
+                <p>此外，58动漫网在视觉和体验设计上刻意降低了信息噪音。首页不会堆砌大量重复海报，而是用清晰的标题和标签帮助用户建立认知。移动端适配让通勤路上刷更新成为可能，收藏和订阅功能则保证了长期追番的连贯性。无论你是刚入坑的新人，还是资深的季度追番党，都能在这个页面找到合适的内容入口。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 体验指南 -->
+    <section class="section" id="guide">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">🧭 体验指南 · <span>如何高效使用本站</span></h2>
+            </div>
+            <div class="guide-grid">
+                <div class="guide-card">
+                    <h4>📌 追更不迷路</h4>
+                    <p>利用“最新更新”列表按时间查看今日已更新作品，配合分类标签快速筛选自己正在追的番剧。</p>
+                </div>
+                <div class="guide-card">
+                    <h4>🔍 深度筛选</h4>
+                    <p>通过分类入口按题材浏览，再结合热门推荐中的评分与简介判断是否适合自己。</p>
+                </div>
+                <div class="guide-card">
+                    <h4>📱 移动端友好</h4>
+                    <p>页面在手机端自动调整布局，通勤路上也能轻松浏览更新和社区评论。</p>
+                </div>
+                <div class="guide-card">
+                    <h4>💬 社区参考</h4>
+                    <p>评论区汇集了真实观众的追番反馈，从剧情讨论到避雷提示都有覆盖。</p>
+                </div>
+                <div class="guide-card">
+                    <h4>📚 补番收藏</h4>
+                    <p>深度解析模块提供作品背景和观看建议，适合补经典老番前做功课。</p>
+                </div>
+                <div class="guide-card">
+                    <h4>🔔 订阅提醒</h4>
+                    <p>关注58动漫网，不错过每季新番的开播时间和重要更新节点。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">❓ 常见问题 · <span>关于58动漫网与追番</span></h2>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-q"><span>Q</span>58动漫网主要提供什么内容？</div>
+                    <div class="faq-a">58动漫网是一个动漫内容聚合与社区讨论平台，提供新番推荐、动漫分类、更新追踪、深度解析和用户评论等模块，帮助动漫爱好者高效发现和追踪作品。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q"><span>Q</span>我是新手，应该从哪些番开始看？</div>
+                    <div class="faq-a">建议先从热门推荐中评分较高且类型合你口味的作品开始。如果喜欢轻松日常，可以选择治愈系；如果偏好剧情烧脑，可以尝试悬疑推理类。深度解析模块也有针对新手的观看顺序建议。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q"><span>Q</span>如何快速找到正在更新的番？</div>
+                    <div class="faq-a">页面顶部的“最新更新”列表按时间排列了当日更新内容，你也可以在分类入口按题材筛选，或者直接使用搜索框查找具体作品名称。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q"><span>Q</span>58动漫网的评分和评论可靠吗？</div>
+                    <div class="faq-a">评分和评论来自社区用户和编辑整理，反映了一部分观众的观感，可以作为参考，但最终是否适合自己还需要结合个人偏好判断。建议多看几条评论并关注深度解析中的客观分析。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q"><span>Q</span>页面上的“分类入口”有哪些类型？</div>
+                    <div class="faq-a">目前分类覆盖热血战斗、恋爱校园、奇幻冒险、悬疑推理、搞笑日常、治愈慢节奏等常见题材，后续会根据季节新番和用户反馈持续调整。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q"><span>Q</span>可以投稿或参与讨论吗？</div>
+                    <div class="faq-a">页面评论区开放给所有访客进行讨论，你可以针对具体作品发表看法、推荐或提问。社区鼓励友善交流，共同维护良好的追番氛围。</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 用户评论 -->
+    <section class="section" id="comments">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">💬 用户评论 · <span>来自追番党的真实声音</span></h2>
+            </div>
+            <div class="comment-list">
+                <div class="comment-item">
+                    <div class="comment-user"><div class="avatar">追</div><span class="username">追番不熬夜</span><span class="comment-date">11月6日</span></div>
+                    <p class="comment-text">58动漫网的更新列表太实用了，每天午休刷一下就知道晚上看什么，不用再翻各个平台。</p>
+                </div>
+                <div class="comment-item">
+                    <div class="comment-user"><div class="avatar">橘</div><span class="username">橘子汽水</span><span class="comment-date">11月5日</span></div>
+                    <p class="comment-text">葬送的芙莉莲第二季节奏还是那么舒服，评论区有人讨论时间线，看完解析更懂了。</p>
+                </div>
+                <div class="comment-item">
+                    <div class="comment-user"><div class="avatar">A</div><span class="username">Aki_0721</span><span class="comment-date">11月4日</span></div>
+                    <p class="comment-text">咒术新一集作画确实顶，但剧情节奏有点赶，希望后面能稳一点。</p>
+                </div>
+                <div class="comment-item">
+                    <div class="comment-user"><div class="avatar">猫</div><span class="username">猫猫牌药屋</span><span class="comment-date">11月3日</span></div>
+                    <p class="comment-text">药屋少女推理部分虽然简单，但猫猫太可爱了，下饭首选。</p>
+                </div>
+                <div class="comment-item">
+                    <div class="comment-user"><div class="avatar">间</div><span class="username">间谍过家家铁粉</span><span class="comment-date">11月2日</span></div>
+                    <p class="comment-text">第三季依然保持水准，阿尼亚的表情包已经存不过来了。</p>
+                </div>
+                <div class="comment-item">
+                    <div class="comment-user"><div class="avatar">迷</div><span class="username">迷宫饭吃到饱</span><span class="comment-date">11月2日</span></div>
+                    <p class="comment-text">迷宫饭第二季的料理设定越来越有趣，边看边饿。</p>
+                </div>
+                <div class="comment-item">
+                    <div class="comment-user"><div class="avatar">危</div><span class="username">危险东西警告</span><span class="comment-date">11月1日</span></div>
+                    <p class="comment-text">我心里危险的东西真的甜到掉牙，山田和京太郎的互动每集都让人嘴角上扬。</p>
+                </div>
+                <div class="comment-item">
+                    <div class="comment-user"><div class="avatar">蓝</div><span class="username">蓝色监狱前锋</span><span class="comment-date">10月31日</span></div>
+                    <p class="comment-text">蓝色监狱第二季节奏比第一季更紧凑，U-20战看得热血沸腾。</p>
+                </div>
+                <div class="comment-item">
+                    <div class="comment-user"><div class="avatar">香</div><span class="username">香格里拉漫游者</span><span class="comment-date">10月30日</span></div>
+                    <p class="comment-text">香格里拉开阔异境设定很好，但有些集数节奏偏慢，建议攒几集一起看。</p>
+                </div>
+                <div class="comment-item">
+                    <div class="comment-user"><div class="avatar">新</div><span class="username">新番观察员</span><span class="comment-date">10月29日</span></div>
+                    <p class="comment-text">希望58动漫网能增加一个“已完结”筛选，补番党需要。</p>
+                </div>
+                <div class="comment-item">
+                    <div class="comment-user"><div class="avatar">声</div><span class="username">声优控</span><span class="comment-date">10月28日</span></div>
+                    <p class="comment-text">建议在角色介绍里加上声优信息，对声优控更友好。</p>
+                </div>
+                <div class="comment-item">
+                    <div class="comment-user"><div class="avatar">路</div><span class="username">路过的追番人</span><span class="comment-date">10月27日</span></div>
+                    <p class="comment-text">整体页面很清爽，没有乱七八糟的弹窗，阅读体验不错。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 相关资讯 -->
+    <section class="section" id="news">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">📰 动漫资讯 · <span>近期动态与看点</span></h2>
+            </div>
+            <div class="news-grid">
+                <div class="news-card">
+                    <div class="news-date">2026年11月7日</div>
+                    <h4 class="news-title">《咒术回战》第三季第8集作画回引热议</h4>
+                    <p class="news-summary">本集由多位原画师参与，战斗场面被观众称为“季度最佳”，社交媒体讨论量迅速攀升。</p>
+                </div>
+                <div class="news-card">
+                    <div class="news-date">2026年11月6日</div>
+                    <h4 class="news-title">《葬送的芙莉莲》第二季新PV公开，考试篇进入高潮</h4>
+                    <p class="news-summary">官方发布了最新预告片，一级魔法使考试的后续发展引发粉丝期待。</p>
+                </div>
+                <div class="news-card">
+                    <div class="news-date">2026年11月5日</div>
+                    <h4 class="news-title">《间谍过家家》第三季追加新角色，声优阵容公布</h4>
+                    <p class="news-summary">新角色将在后续剧情中登场，官方同时公开了人设图和声优信息。</p>
+                </div>
+                <div class="news-card">
+                    <div class="news-date">2026年11月4日</div>
+                    <h4 class="news-title">《迷宫饭》第二季 Blu-ray 第一卷特典公开</h4>
+                    <p class="news-summary">特典包含原创料理手册和制作团队访谈，粉丝表示“非常想要”。</p>
+                </div>
+                <div class="news-card">
+                    <div class="news-date">2026年11月3日</div>
+                    <h4 class="news-title">《我心里危险的东西》第二季评分持续走高</h4>
+                    <p class="news-summary">在多个动漫评分网站保持高分，被观众评价为“近年最细腻的恋爱漫改”。</p>
+                </div>
+                <div class="news-card">
+                    <div class="news-date">2026年11月2日</div>
+                    <h4 class="news-title">58动漫网秋季追番调查：治愈系作品观看时长增长明显</h4>
+                    <p class="news-summary">根据社区讨论热度统计，治愈慢节奏类作品在本季度关注度提升，观众更倾向选择轻松内容。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-inner">
+                <div>
+                    <h5>58动漫网</h5>
+                    <p>一个专注于动漫内容聚合与社区讨论的页面，帮助你发现好作品、跟进更新、参与讨论。内容涵盖热门推荐、分类索引、深度解析和用户评论。</p>
+                </div>
+                <div>
+                    <h5>快速导航</h5>
+                    <a href="/#hot">热门推荐</a>
+                    <a href="/#latest">最新更新</a>
+                    <a href="/#category">分类入口</a>
+                    <a href="/#analysis">深度解析</a>
+                </div>
+                <div>
+                    <h5>社区</h5>
+                    <a href="/#comments">用户评论</a>
+                    <a href="/#faq">常见问题</a>
+                    <a href="/#news">动漫资讯</a>
+                    <a href="/#guide">体验指南</a>
+                </div>
+                <div>
+                    <h5>友情链接</h5>
+                    <a href="/#">动漫资源站</a>
+                    <a href="/#">追番社区</a>
+                    <a href="/#">声优资料库</a>
+                    <a href="/#">新番时间表</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 58动漫网 · 内容仅供交流参考</span>
+                <span>本站不提供在线播放，仅作资讯与社区讨论用途</span>
+            </div>
+        </div>
+    </footer>
+
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</body>
+                      </html>
